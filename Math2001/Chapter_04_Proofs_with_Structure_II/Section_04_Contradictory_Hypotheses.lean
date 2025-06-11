@@ -65,7 +65,15 @@ example {p : ℕ} (hp : 2 ≤ p) (H : ∀ m : ℕ, 1 < m → m < p → ¬m ∣ p
     left
     addarith [hm]
   -- the case `1 < m`
-  sorry
+  · have h2m : m ≤ p := Nat.le_of_dvd hp' hmp
+    obtain hm2 | hm2_left : m = p ∨ m < p := eq_or_lt_of_le h2m
+    · right
+      apply hm2
+    · have : ¬m ∣ p
+      · apply H
+        apply hm_left
+        apply hm2_left
+      contradiction
 
 example : Prime 5 := by
   apply prime_test
@@ -83,20 +91,98 @@ example : Prime 5 := by
 
 example {a b c : ℕ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
     (h_pyth : a ^ 2 + b ^ 2 = c ^ 2) : 3 ≤ a := by
-  sorry
+  obtain ha2 | ha2 := le_or_succ_le a 2
+  · obtain hb2 | hb2 := le_or_succ_le b 1
+    · have hc2 :=
+        calc
+          c ^ 2
+            = a ^ 2 + b ^ 2 := by rw [h_pyth]
+          _ ≤ 2 ^ 2 + 1 ^ 2 := by rel [ha2, hb2]
+          _ < 3 ^ 2 := by numbers
+      cancel 2 at hc2
+      interval_cases a
+      · interval_cases b 
+        · interval_cases c
+          · numbers at h_pyth
+          · numbers at h_pyth
+      · interval_cases b 
+        · interval_cases c
+          · numbers at h_pyth
+          · numbers at h_pyth
+    · have hb3 :=
+        calc
+          b ^ 2
+            < a ^ 2 + b ^ 2 := by extra
+          _ = c ^ 2 := by rw [h_pyth]
+      cancel 2 at hb3
+      have hb4 : b + 1 ≤ c
+      · apply hb3
+      have hc2 :=
+        calc
+          c ^ 2
+            = a ^ 2 + b ^ 2 := by rw [h_pyth]
+          _ ≤ 2 ^ 2 + b ^ 2 := by rel [ha2]
+          _ = b ^ 2 + 2 * 2 := by ring
+          _ ≤ b ^ 2 + 2 * b := by rel [hb2]
+          _ < b ^ 2 + 2 * b + 1 := by extra
+          _ = (b + 1) ^ 2 := by ring
+      cancel 2 at hc2
+      have hc3 : ¬b + 1 ≤ c
+      · apply not_le_of_gt
+        apply hc2
+      contradiction
+  · apply ha2
 
 /-! # Exercises -/
 
 
 example {x y : ℝ} (n : ℕ) (hx : 0 ≤ x) (hn : 0 < n) (h : y ^ n ≤ x ^ n) :
     y ≤ x := by
-  sorry
+  cancel n at h
 
 example (n : ℤ) (hn : n ^ 2 ≡ 4 [ZMOD 5]) : n ≡ 2 [ZMOD 5] ∨ n ≡ 3 [ZMOD 5] := by
-  sorry
+  mod_cases h : n % 5
+  · have :=
+      calc
+        0 ≡ 0 ^ 2 [ZMOD 5] := by numbers
+        _ ≡ n ^ 2 [ZMOD 5] := by rel [h]
+        _ ≡ 4 [ZMOD 5] := hn
+    numbers at this
+  · have :=
+      calc
+        1 ≡ 1 ^ 2 [ZMOD 5] := by numbers
+        _ ≡ 1 ^ 2 [ZMOD 5] := by numbers
+        _ ≡ n ^ 2 [ZMOD 5] := by rel [h]
+        _ ≡ 4 [ZMOD 5] := hn
+    numbers at this
+  · left
+    apply h
+  · right
+    apply h
+  · have :=
+      calc
+        1 ≡ 1 + 5 * 3 [ZMOD 5] := by extra
+        _ ≡ 4 ^ 2 [ZMOD 5] := by numbers
+        _ ≡ n ^ 2 [ZMOD 5] := by rel [h]
+        _ ≡ 4 [ZMOD 5] := hn
+    numbers at this
 
 example : Prime 7 := by
-  sorry
+  apply prime_test
+  · numbers
+  intro m hm_left hm_right
+  apply Nat.not_dvd_of_exists_lt_and_lt
+  interval_cases m
+  · use 3
+    constructor <;> numbers
+  · use 2
+    constructor <;> numbers
+  · use 1
+    constructor <;> numbers
+  · use 1
+    constructor <;> numbers
+  · use 1
+    constructor <;> numbers
 
 example {x : ℚ} (h1 : x ^ 2 = 4) (h2 : 1 < x) : x = 2 := by
   have h3 :=
@@ -104,9 +190,46 @@ example {x : ℚ} (h1 : x ^ 2 = 4) (h2 : 1 < x) : x = 2 := by
       (x + 2) * (x - 2) = x ^ 2 + 2 * x - 2 * x - 4 := by ring
       _ = 0 := by addarith [h1]
   rw [mul_eq_zero] at h3
-  sorry
+  obtain h4 | h4 := h3
+  · have :=
+      calc
+        1 < x := by rel [h2]
+        _ = -2 := by addarith [h4]
+    numbers at this
+  · addarith [h4]
 
 namespace Nat
 
 example (p : ℕ) (h : Prime p) : p = 2 ∨ Odd p := by
-  sorry
+  obtain ⟨h2, h3⟩ := h
+  obtain h4 | h4 := le_or_succ_le p 1
+  · have h5 :=
+      calc
+        p ≤ 1 := by rel [h4]
+        _ < 1 + 1 := by extra
+        _ = 2 := by numbers
+    have : ¬2 ≤ p
+    · apply not_le_of_gt
+      apply h5
+    contradiction
+  · obtain h5 | h5 := le_or_succ_le p 2
+    · interval_cases p
+      · left
+        numbers
+    · right
+      obtain h6 | h6 := even_or_odd p
+      · obtain ⟨q, h7⟩ := h6
+        have h8 : 2 ∣ p
+        · use q
+          apply h7
+        have h9 : 2 = 1 ∨ 2 = p
+        · apply h3
+          apply h8
+        obtain h10 | h10 := h9
+        · numbers at h10
+        · have h11 :=
+            calc
+              3 ≤ p := by rel [h5]
+              _ = 2 := by rw [h10]
+          numbers at h11
+      · apply h6
