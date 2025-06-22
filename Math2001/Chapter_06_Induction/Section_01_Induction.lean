@@ -260,4 +260,10 @@ theorem Odd.pow {a : ℕ} (ha : Odd a) (n : ℕ) : Odd (a ^ n) := by
       _ = 2 * (2 * p * q + p + q) + 1 := by ring
 
 theorem Nat.even_of_pow_even {a n : ℕ} (ha : Even (a ^ n)) : Even a := by
-  sorry
+  obtain ha2 | ha2 := even_or_odd a
+  · apply ha2
+  · have : Odd (a ^ n)
+    · apply Odd.pow
+      apply ha2
+    rw [Nat.odd_iff_not_even] at this
+    contradiction
