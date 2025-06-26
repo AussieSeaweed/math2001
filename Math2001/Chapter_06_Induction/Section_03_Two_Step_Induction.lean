@@ -348,12 +348,12 @@ example : forall_sufficiently_large n : ℕ,
         _ < 0.4 * 1.6 ^ (k + 1) + 0.4 * 1.6 ^ k - 0.016 * 1.6 ^ k + 0.016 * 1.6 ^ k := by extra
         _ = 0.4 * 1.6 ^ (k + 1) + 0.4 * 1.6 ^ k := by ring
         _ < F (k + 1) + F k := by rel [h1, h3]
-        _ = (F (k + 1) + F k:ℤ) := by sorry
+        _ = (F (k + 1) + F k:ℤ) := by norm_cast
         _ = F (k + 2) := by rw [F]
     · calc
         (F (k + 2):ℚ)
-          = (F (k + 1) + F k:ℤ) := by rw[F]
-        _ = F (k + 1) + F k := by sorry
+          = (F (k + 1) + F k:ℤ) := by rw [F]
+        _ = F (k + 1) + F k := by norm_cast
         _ < 0.5 * 1.7 ^ (k + 1) + 0.5 * 1.7 ^ k := by rel [h2, h4]
         _ < 0.5 * 1.7 ^ (k + 1) + 0.5 * 1.7 ^ k + 0.095 * 1.7 ^ k := by extra
         _ = 0.5 * 1.7 ^ (k + 1 + 1) := by ring
