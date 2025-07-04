@@ -286,10 +286,12 @@ example (m : ℕ) : p m ≡ 2 [ZMOD 7] ∨ p m ≡ 3 [ZMOD 7] := by
               ≡ 6 * 2 - 2 [ZMOD 7] := by rel [h1, h2]
             _ ≡ 3 + 7 * 1 [ZMOD 7] := by numbers
             _ ≡ 3 [ZMOD 7] := by extra
-  obtain ⟨h1, h2⟩ | ⟨h1, h2⟩ := H m
+  obtain ⟨h1, h2⟩ | ⟨h1, h2⟩ | ⟨h1, h2⟩ := H m
   · left
     exact h1
   · right
+    exact h1
+  · left
     exact h1
 
 def r : ℕ → ℤ

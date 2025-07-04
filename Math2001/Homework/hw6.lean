@@ -31,7 +31,7 @@ theorem problem2 : ¬ (∃ x : ℝ, ∀ y : ℝ, y ≤ x) := by
     calc
       1 = 1 + x - x := by ring
       _ ≤ x - x := by rel [h2]
-      _ ≤ 0 := by ring
+      _ = 0 := by ring
   numbers at this
 
 @[autograded 3]
