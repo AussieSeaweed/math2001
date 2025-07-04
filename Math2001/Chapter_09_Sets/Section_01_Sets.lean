@@ -125,8 +125,8 @@ example : {1, 3, 6} ⊆ {t : ℚ | t < 10} := by
 /-! # Exercises -/
 
 
-example : 4 ∈ {a : ℚ | a < 3} := by
-  sorry
+-- example : 4 ∈ {a : ℚ | a < 3} := by
+--   sorry
 
 example : 4 ∉ {a : ℚ | a < 3} := by
   dsimp
@@ -136,12 +136,12 @@ example : 6 ∈ {n : ℕ | n ∣ 42} := by
   use 7
   numbers
 
-example : 6 ∉ {n : ℕ | n ∣ 42} := by
-  sorry
+-- example : 6 ∉ {n : ℕ | n ∣ 42} := by
+--   sorry
 
 
-example : 8 ∈ {k : ℤ | 5 ∣ k} := by
-  sorry
+-- example : 8 ∈ {k : ℤ | 5 ∣ k} := by
+--   sorry
 
 example : 8 ∉ {k : ℤ | 5 ∣ k} := by
   apply Int.not_dvd_of_exists_lt_and_lt 8 5
@@ -152,8 +152,8 @@ example : 11 ∈ {n : ℕ | Odd n} := by
   use 5
   numbers
 
-example : 11 ∉ {n : ℕ | Odd n} := by
-  sorry
+-- example : 11 ∉ {n : ℕ | Odd n} := by
+--   sorry
 
 
 example : -3 ∈ {x : ℝ | ∀ y : ℝ, x ≤ y ^ 2} := by
@@ -163,8 +163,8 @@ example : -3 ∈ {x : ℝ | ∀ y : ℝ, x ≤ y ^ 2} := by
       ≤ 0 := by numbers
     _ ≤ y ^ 2 := by extra
 
-example : -3 ∉ {x : ℝ | ∀ y : ℝ, x ≤ y ^ 2} := by
-  sorry
+-- example : -3 ∉ {x : ℝ | ∀ y : ℝ, x ≤ y ^ 2} := by
+--   sorry
 
 
 example : {a : ℕ | 20 ∣ a} ⊆ {x : ℕ | 5 ∣ x} := by
@@ -175,12 +175,12 @@ example : {a : ℕ | 20 ∣ a} ⊆ {x : ℕ | 5 ∣ x} := by
   rw [h]
   ring
 
-example : {a : ℕ | 20 ∣ a} ⊈ {x : ℕ | 5 ∣ x} := by
-  sorry
+-- example : {a : ℕ | 20 ∣ a} ⊈ {x : ℕ | 5 ∣ x} := by
+--   sorry
 
 
-example : {a : ℕ | 5 ∣ a} ⊆ {x : ℕ | 20 ∣ x} := by
-  sorry
+-- example : {a : ℕ | 5 ∣ a} ⊆ {x : ℕ | 20 ∣ x} := by
+--   sorry
 
 example : {a : ℕ | 5 ∣ a} ⊈ {x : ℕ | 20 ∣ x} := by
   rw [Set.subset_def]
@@ -194,8 +194,8 @@ example : {a : ℕ | 5 ∣ a} ⊈ {x : ℕ | 20 ∣ x} := by
     use 0
     constructor <;> numbers
 
-example : {r : ℤ | 3 ∣ r} ⊆ {s : ℤ | 0 ≤ s} := by
-  sorry
+-- example : {r : ℤ | 3 ∣ r} ⊆ {s : ℤ | 0 ≤ s} := by
+--   sorry
 
 example : {r : ℤ | 3 ∣ r} ⊈ {s : ℤ | 0 ≤ s} := by
   rw [Set.subset_def]
@@ -220,8 +220,8 @@ example : {m : ℤ | m ≥ 10} ⊆ {n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n} := by
     _ = 4 * m + 26 * m := by ring
     _ ≥ 4 * m := by extra
 
-example : {m : ℤ | m ≥ 10} ⊈ {n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n} := by
-  sorry
+-- example : {m : ℤ | m ≥ 10} ⊈ {n : ℤ | n ^ 3 - 7 * n ^ 2 ≥ 4 * n} := by
+--   sorry
 
 
 namespace Int
@@ -242,13 +242,13 @@ example : {n : ℤ | Even n} = {a : ℤ | a ≡ 6 [ZMOD 2]} := by
       _ = 2 * k + 6 := by rw [hk]
       _ = 2 * (k + 3) := by ring
 
-example : {n : ℤ | Even n} ≠ {a : ℤ | a ≡ 6 [ZMOD 2]} := by
-  sorry
+-- example : {n : ℤ | Even n} ≠ {a : ℤ | a ≡ 6 [ZMOD 2]} := by
+--   sorry
 end Int
 
 
-example : {t : ℝ | t ^ 2 - 5 * t + 4 = 0} = {4} := by
-  sorry
+-- example : {t : ℝ | t ^ 2 - 5 * t + 4 = 0} = {4} := by
+--   sorry
 
 example : {t : ℝ | t ^ 2 - 5 * t + 4 = 0} ≠ {4} := by
   ext
@@ -258,8 +258,8 @@ example : {t : ℝ | t ^ 2 - 5 * t + 4 = 0} ≠ {4} := by
   left
   constructor <;> numbers
 
-example : {k : ℤ | 8 ∣ 6 * k} = {l : ℤ | 8 ∣ l} := by
-  sorry
+-- example : {k : ℤ | 8 ∣ 6 * k} = {l : ℤ | 8 ∣ l} := by
+--   sorry
 
 example : {k : ℤ | 8 ∣ 6 * k} ≠ {l : ℤ | 8 ∣ l} := by
   ext
@@ -289,12 +289,12 @@ example : {k : ℤ | 7 ∣ 9 * k} = {l : ℤ | 7 ∣ l} := by
     rw [hn]
     ring
 
-example : {k : ℤ | 7 ∣ 9 * k} ≠ {l : ℤ | 7 ∣ l} := by
-  sorry
+-- example : {k : ℤ | 7 ∣ 9 * k} ≠ {l : ℤ | 7 ∣ l} := by
+--   sorry
 
 
-example : {1, 2, 3} = {1, 2} := by
-  sorry
+-- example : {1, 2, 3} = {1, 2} := by
+--   sorry
 
 example : {1, 2, 3} ≠ {1, 2} := by
   ext

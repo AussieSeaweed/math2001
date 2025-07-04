@@ -177,12 +177,12 @@ example : Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
     use (4 - y) / 3
     ring
 
-example : ¬ Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
-  sorry
+-- example : ¬ Bijective (fun (x : ℝ) ↦ 4 - 3 * x) := by
+--   sorry
 
 
-example : Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
-  sorry
+-- example : Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
+--   sorry
 
 example : ¬ Bijective (fun (x : ℝ) ↦ x ^ 2 + 2 * x) := by
   dsimp [Bijective, Surjective]
@@ -229,8 +229,8 @@ example : Bijective e := by
     · use water
       exhaust
 
-example : ¬ Bijective e := by
-  sorry
+-- example : ¬ Bijective e := by
+--   sorry
 
 
 example : ∀ f : Subatomic → Subatomic, Injective f → Bijective f := by

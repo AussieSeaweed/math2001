@@ -227,8 +227,8 @@ open Little
 local infix:50 " ∼ " => s
 
 
-example : Reflexive (· ∼ ·) := by
-  sorry
+-- example : Reflexive (· ∼ ·) := by
+--   sorry
 
 example : ¬ Reflexive (· ∼ ·) := by
   dsimp [Reflexive]
@@ -286,11 +286,11 @@ example : Symmetric (· ∼ ·) := by
     rw [s]
     dsimp
 
-example : ¬ Symmetric (· ∼ ·) := by
-  sorry
+-- example : ¬ Symmetric (· ∼ ·) := by
+--   sorry
 
-example : AntiSymmetric (· ∼ ·) := by
-  sorry
+-- example : AntiSymmetric (· ∼ ·) := by
+--   sorry
 
 example : ¬ AntiSymmetric (· ∼ ·) := by
   dsimp [AntiSymmetric]
@@ -298,8 +298,8 @@ example : ¬ AntiSymmetric (· ∼ ·) := by
   use meg, jo
   exhaust
 
-example : Transitive (· ∼ ·) := by
-  sorry
+-- example : Transitive (· ∼ ·) := by
+--   sorry
 
 example : ¬ Transitive (· ∼ ·) := by
   dsimp [Transitive]
@@ -313,8 +313,8 @@ end
 section
 local infix:50 "∼" => fun (x y : ℤ) ↦ y ≡ x + 1 [ZMOD 5]
 
-example : Reflexive (· ∼ ·) := by
-  sorry
+-- example : Reflexive (· ∼ ·) := by
+--   sorry
 
 example : ¬ Reflexive (· ∼ ·) := by
   dsimp [Reflexive]
@@ -323,8 +323,8 @@ example : ¬ Reflexive (· ∼ ·) := by
   intro h
   numbers at h
 
-example : Symmetric (· ∼ ·) := by
-  sorry
+-- example : Symmetric (· ∼ ·) := by
+--   sorry
 
 example : ¬ Symmetric (· ∼ ·) := by
   dsimp [Symmetric]
@@ -345,11 +345,11 @@ example : AntiSymmetric (· ∼ ·) := by
       _ = 2 := by ring
   numbers at this
 
-example : ¬ AntiSymmetric (· ∼ ·) := by
-  sorry
+-- example : ¬ AntiSymmetric (· ∼ ·) := by
+--   sorry
 
-example : Transitive (· ∼ ·) := by
-  sorry
+-- example : Transitive (· ∼ ·) := by
+--   sorry
 
 example : ¬ Transitive (· ∼ ·) := by
   dsimp [Transitive]
@@ -368,8 +368,8 @@ end
 section
 local infix:50 "∼" => fun (x y : ℤ) ↦ x + y ≡ 0 [ZMOD 3]
 
-example : Reflexive (· ∼ ·) := by
-  sorry
+-- example : Reflexive (· ∼ ·) := by
+--   sorry
 
 example : ¬ Reflexive (· ∼ ·) := by
   dsimp [Reflexive]
@@ -386,11 +386,11 @@ example : Symmetric (· ∼ ·) := by
       = x + y := by ring
     _ ≡ 0 [ZMOD 3] := by rel [h]
 
-example : ¬ Symmetric (· ∼ ·) := by
-  sorry
+-- example : ¬ Symmetric (· ∼ ·) := by
+--   sorry
 
-example : AntiSymmetric (· ∼ ·) := by
-  sorry
+-- example : AntiSymmetric (· ∼ ·) := by
+--   sorry
 
 example : ¬ AntiSymmetric (· ∼ ·) := by
   dsimp [AntiSymmetric]
@@ -408,8 +408,8 @@ example : ¬ AntiSymmetric (· ∼ ·) := by
         _ ≡ 0 [ZMOD 3] := by extra
     · numbers
 
-example : Transitive (· ∼ ·) := by
-  sorry
+-- example : Transitive (· ∼ ·) := by
+--   sorry
 
 example : ¬ Transitive (· ∼ ·) := by
   dsimp [Transitive]
@@ -432,11 +432,11 @@ example : Reflexive ((· : Set ℕ) ⊆ ·) := by
   intro x h
   apply h
 
-example : ¬ Reflexive ((· : Set ℕ) ⊆ ·) := by
-  sorry
+-- example : ¬ Reflexive ((· : Set ℕ) ⊆ ·) := by
+--   sorry
 
-example : Symmetric ((· : Set ℕ) ⊆ ·) := by
-  sorry
+-- example : Symmetric ((· : Set ℕ) ⊆ ·) := by
+--   sorry
 
 example : ¬ Symmetric ((· : Set ℕ) ⊆ ·) := by
   dsimp [Symmetric]
@@ -462,8 +462,8 @@ example : AntiSymmetric ((· : Set ℕ) ⊆ ·) := by
     apply h2
     apply h3
 
-example : ¬ AntiSymmetric ((· : Set ℕ) ⊆ ·) := by
-  sorry
+-- example : ¬ AntiSymmetric ((· : Set ℕ) ⊆ ·) := by
+--   sorry
 
 example : Transitive ((· : Set ℕ) ⊆ ·) := by
   dsimp [Transitive]
@@ -473,8 +473,8 @@ example : Transitive ((· : Set ℕ) ⊆ ·) := by
   apply h1
   apply h3
 
-example : ¬ Transitive ((· : Set ℕ) ⊆ ·) := by
-  sorry
+-- example : ¬ Transitive ((· : Set ℕ) ⊆ ·) := by
+--   sorry
 
 
 
@@ -486,11 +486,11 @@ example : Reflexive (· ≺ ·) := by
   intro ⟨x, y⟩
   constructor <;> extra
 
-example : ¬ Reflexive (· ≺ ·) := by
-  sorry
+-- example : ¬ Reflexive (· ≺ ·) := by
+--   sorry
 
-example : Symmetric (· ≺ ·) := by
-  sorry
+-- example : Symmetric (· ≺ ·) := by
+--   sorry
 
 example : ¬ Symmetric (· ≺ ·) := by
   dsimp [Symmetric]
@@ -514,8 +514,8 @@ example : AntiSymmetric (· ≺ ·) := by
     apply hy1
     apply hy2
 
-example : ¬ AntiSymmetric (· ≺ ·) := by
-  sorry
+-- example : ¬ AntiSymmetric (· ≺ ·) := by
+--   sorry
 
 example : Transitive (· ≺ ·) := by
   dsimp [Transitive]
@@ -524,7 +524,7 @@ example : Transitive (· ≺ ·) := by
   · addarith [hx1, hx2]
   · addarith [hy1, hy2]
 
-example : ¬ Transitive (· ≺ ·) := by
-  sorry
+-- example : ¬ Transitive (· ≺ ·) := by
+--   sorry
 
 end
